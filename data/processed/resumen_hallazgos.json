@@ -1,0 +1,108 @@
+{
+  "top_dispersion": [
+    {
+      "item": "Detergente 750ml",
+      "provincia": "Córdoba",
+      "gap_pct": 70.7,
+      "min": 2286.0,
+      "max": 3901.0,
+      "cadena_mas_barata": "DIA",
+      "cadena_mas_cara": "LA ANONIMA"
+    },
+    {
+      "item": "Detergente 750ml",
+      "provincia": "Mendoza",
+      "gap_pct": 67.2,
+      "min": 2285.0,
+      "max": 3821.0,
+      "cadena_mas_barata": "DIA",
+      "cadena_mas_cara": "LA ANONIMA"
+    },
+    {
+      "item": "Detergente 750ml",
+      "provincia": "Buenos Aires",
+      "gap_pct": 66.5,
+      "min": 2258.0,
+      "max": 3759.0,
+      "cadena_mas_barata": "DIA",
+      "cadena_mas_cara": "LA ANONIMA"
+    },
+    {
+      "item": "Detergente 750ml",
+      "provincia": "Tucumán",
+      "gap_pct": 66.3,
+      "min": 2283.0,
+      "max": 3797.0,
+      "cadena_mas_barata": "DIA",
+      "cadena_mas_cara": "LA ANONIMA"
+    },
+    {
+      "item": "Detergente 750ml",
+      "provincia": "Santa Fe",
+      "gap_pct": 64.1,
+      "min": 2308.0,
+      "max": 3787.0,
+      "cadena_mas_barata": "DIA",
+      "cadena_mas_cara": "LA ANONIMA"
+    },
+    {
+      "item": "Shampoo 350ml",
+      "provincia": "CABA",
+      "gap_pct": 60.9,
+      "min": 3915.0,
+      "max": 6299.0,
+      "cadena_mas_barata": "DIA",
+      "cadena_mas_cara": "JUMBO"
+    },
+    {
+      "item": "Shampoo 350ml",
+      "provincia": "Santa Fe",
+      "gap_pct": 60.2,
+      "min": 3932.0,
+      "max": 6298.0,
+      "cadena_mas_barata": "DIA",
+      "cadena_mas_cara": "JUMBO"
+    },
+    {
+      "item": "Shampoo 350ml",
+      "provincia": "Córdoba",
+      "gap_pct": 59.0,
+      "min": 4019.0,
+      "max": 6392.0,
+      "cadena_mas_barata": "DIA",
+      "cadena_mas_cara": "JUMBO"
+    },
+    {
+      "item": "Shampoo 350ml",
+      "provincia": "Buenos Aires",
+      "gap_pct": 58.0,
+      "min": 3977.0,
+      "max": 6285.0,
+      "cadena_mas_barata": "DIA",
+      "cadena_mas_cara": "JUMBO"
+    },
+    {
+      "item": "Azúcar 1kg",
+      "provincia": "Buenos Aires",
+      "gap_pct": 54.4,
+      "min": 1235.0,
+      "max": 1907.0,
+      "cadena_mas_barata": "DIA",
+      "cadena_mas_cara": "CARREFOUR"
+    }
+  ],
+  "gap_mediano_pct": 34.9328245817033,
+  "canasta": {
+    "optima": 159527.0,
+    "tipica": 184825.0,
+    "peor": 213678.0
+  },
+  "ahorro_mensual_pesos": 25298.0,
+  "ahorro_mensual_pct": 13.7,
+  "variacion_canasta": {
+    "f0": "11/07/2026",
+    "f1": "24/07/2026",
+    "dias": 14,
+    "var_pct": 1.2212769433327608
+  }
+}
