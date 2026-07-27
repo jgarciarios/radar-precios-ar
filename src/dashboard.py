@@ -25,6 +25,27 @@ from src.utils import get_logger
 
 log = get_logger("dashboard")
 SALIDA = cfg.REPORTS / "dashboard.html"
+# index.html en la raíz: da una URL corta (jgarciarios.github.io/radar-precios-ar/)
+# y evita que el link termine en ".html", que es lo que hace que LinkedIn lo
+# rechace como "enlace no válido".
+INDICE = cfg.ROOT / "index.html"
+
+REDIRECT = """<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Radar de Precios Argentina</title>
+<meta name="description" content="{desc}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Radar de Precios Argentina">
+<meta property="og:description" content="{desc}">
+<meta property="og:image" content="{base}/reports/figs/02_canasta_escenarios.png">
+<meta property="og:url" content="{base}/">
+<meta name="twitter:card" content="summary_large_image">
+<meta http-equiv="refresh" content="0; url=reports/dashboard.html">
+<link rel="canonical" href="{base}/reports/dashboard.html">
+</head><body style="font-family:system-ui;padding:40px">
+<p>Redirigiendo al <a href="reports/dashboard.html">dashboard</a>...</p>
+</body></html>
+"""
 
 
 def _sanear(o):
@@ -156,7 +177,14 @@ PLANTILLA = """<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Radar de Precios Argentina</title>
+<title>Radar de Precios Argentina — el mismo producto, hasta 47% más caro</title>
+<meta name="description" content="__DESC__">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Radar de Precios Argentina">
+<meta property="og:description" content="__DESC__">
+<meta property="og:image" content="__BASE__/reports/figs/02_canasta_escenarios.png">
+<meta property="og:url" content="__BASE__/">
+<meta name="twitter:card" content="summary_large_image">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script id="datos" type="application/json">__DATOS__</script>
 <style>
@@ -428,13 +456,21 @@ def run() -> None:
     # son saltos de línea invisibles que rompen el parseo en navegadores viejos.
     datos = (datos.replace("</", "<\\/")
                   .replace("\u2028", "\\u2028").replace("\u2029", "\\u2029"))
+    k = d["kpis"]
+    desc = (f"El mismo producto cuesta hasta {k['gap_mediano']}% más caro según la cadena. "
+            f"Análisis de {k.get('filas_crudas', 0)/1e6:.0f} millones de precios de "
+            f"supermercados argentinos (base SEPA).")
     html = (PLANTILLA
             .replace("__DATOS__", datos)
+            .replace("__DESC__", desc)
+            .replace("__BASE__", cfg.SITIO_BASE)
             .replace("__DESDE__", d["kpis"]["desde"])
             .replace("__HASTA__", d["kpis"]["hasta"])
             .replace("__DIAS__", str(d["kpis"]["dias"])))
     SALIDA.parent.mkdir(parents=True, exist_ok=True)
     SALIDA.write_text(html, encoding="utf-8")
+    INDICE.write_text(REDIRECT.format(desc=desc, base=cfg.SITIO_BASE), encoding="utf-8")
+    log.info("Índice:    %s  ->  %s/", INDICE, cfg.SITIO_BASE)
     log.info("Dashboard: %s (%.1f MB)", SALIDA, SALIDA.stat().st_size / 1e6)
     log.info("Abrilo con:  open %s", SALIDA)
 

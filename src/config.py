@@ -19,6 +19,12 @@ for _p in (RAW, INTERIM, PROCESSED, REPORTS / "figs"):
 
 # --- Fuente ------------------------------------------------------------------
 # Portal CKAN donde se publican los recursos diarios de SEPA (minoristas).
+# URL pública del sitio (GitHub Pages). Se usa para las etiquetas OpenGraph
+# del dashboard: sin ellas, LinkedIn y WhatsApp rechazan el link o lo muestran
+# sin vista previa. og:image tiene que ser una URL absoluta, no relativa.
+SITIO_BASE = os.environ.get(
+    "RADAR_SITIO_BASE", "https://jgarciarios.github.io/radar-precios-ar")
+
 CKAN_BASE = "https://datos.produccion.gob.ar"
 CKAN_PACKAGE = "sepa-precios"
 CKAN_API = f"{CKAN_BASE}/api/3/action/package_show?id={CKAN_PACKAGE}"
