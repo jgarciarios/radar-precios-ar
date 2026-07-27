@@ -1,0 +1,5 @@
+# El dashboard es una salida generada, no código fuente: sin esto GitHub
+# clasifica el repo como "HTML" porque el HTML con los datos embebidos pesa
+# más que todo el Python junto.
+reports/*.html linguist-generated=true
+notebooks/*.ipynb linguist-documentation=true
