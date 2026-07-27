@@ -12,12 +12,12 @@ Pipeline de datos y análisis sobre la base **SEPA** (Sistema Electrónico de Pu
 
 | | |
 |---|---|
-| **47,1%** | Diferencia mediana entre la cadena más cara y la más barata, mismo producto, misma provincia, precio por kilo o litro |
-| **$82.171** | Lo que gasta de más por mes un hogar de 4 personas comprando en la cadena equivocada — un **18,1%** de la canasta |
-| **−2,2%** | Variación de la canasta entre el 19 y el 25 de julio de 2026 |
+| **47,8%** | Diferencia mediana entre la cadena más cara y la más barata, mismo producto, misma provincia, precio por kilo o litro |
+| **$86.334** | Lo que gasta de más por mes un hogar de 4 personas comprando en la cadena equivocada — un **18,5%** de la canasta |
+| **−1,3%** | Variación de la canasta entre el 19 y el 25 de julio de 2026 |
 | **24,4%** | De los productos: las dos fuentes oficiales del tamaño del envase **se contradicen entre sí** |
 
-Escala procesada: **101,6 millones de registros** en 7 días, de 18 cadenas y 3.170 sucursales, sobre ~82.000 productos únicos por día.
+Escala procesada: **101.558.076 registros** en 7 días, de hasta 18 cadenas y 3.170 sucursales, sobre ~83.000 productos únicos por día.
 
 ![Canasta mensual en tres escenarios](reports/figs/02_canasta_escenarios.png)
 
@@ -116,7 +116,7 @@ Que un dashboard se vea lindo no significa que el número esté bien.
 - **SEPA cubre solo grandes superficies.** No incluye almacenes de barrio, ferias ni mayoristas, que es donde compra buena parte del país.
 - **Son precios de lista**, sin promociones ni descuentos bancarios, que en Argentina mueven el precio efectivo más que la lista.
 - **Los productos se identifican por patrones de texto** sobre la descripción. Un item puede capturar presentaciones distintas del mismo producto.
-- **La muestra cambia día a día**: entre el 19 y el 25 de julio el número de cadenas que reportan osciló entre 16 y 18. Una variación entre fechas puede reflejar composición de la muestra y no un cambio real de precios.
+- **La muestra cambia día a día**: el número de cadenas que reportan osciló entre 16 y 18, y **solo el 41,3% de las sucursales (1.904 de 4.614) reporta los 7 días** — las tres banderas del grupo Carrefour reportan apenas 2. Una variación entre fechas puede reflejar composición de la muestra y no un cambio real de precios. Por eso el hallazgo principal es la dispersión *dentro* de cada día.
 - **La canasta no incluye carnes.** Medido sobre 500.000 filas, `carne picada` y
   `pollo entero` capturaban 47 y 3 registros: la carne fresca se vende al peso en
   mostrador y casi no se publica en SEPA con código de barras. Se sacaron de la
