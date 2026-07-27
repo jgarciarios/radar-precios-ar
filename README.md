@@ -117,6 +117,10 @@ Que un dashboard se vea lindo no significa que el número esté bien.
 - **Son precios de lista**, sin promociones ni descuentos bancarios, que en Argentina mueven el precio efectivo más que la lista.
 - **Los productos se identifican por patrones de texto** sobre la descripción. Un item puede capturar presentaciones distintas del mismo producto.
 - **La muestra cambia día a día**: entre el 19 y el 25 de julio el número de cadenas que reportan osciló entre 16 y 18. Una variación entre fechas puede reflejar composición de la muestra y no un cambio real de precios.
+- **La canasta no incluye carnes.** Medido sobre 500.000 filas, `carne picada` y
+  `pollo entero` capturaban 47 y 3 registros: la carne fresca se vende al peso en
+  mostrador y casi no se publica en SEPA con código de barras. Se sacaron de la
+  canasta antes que dejarlas aportando al índice con 3 observaciones.
 - **Las cantidades mensuales del hogar tipo son un supuesto propio**, editable en `src/canasta.py`. No son las del INDEC, y esta canasta no pretende ser un IPC alternativo.
 - **Solo 7 días de serie**, porque el portal no conserva histórico. El pipeline está pensado para correr a diario y acumular.
 

@@ -246,7 +246,7 @@ PLANTILLA = """<!DOCTYPE html>
 
   <div class="card">
     <h2>Costo mensual de la canasta según dónde compres</h2>
-    <p class="sub">Canasta de 29 productos de consumo masivo para un hogar de 4 personas.
+    <p class="sub">Canasta de __NITEMS__ productos de consumo masivo para un hogar de 4 personas.
        Precios normalizados por kilo, litro o unidad.</p>
     <div class="chartbox"><canvas id="c_canasta"></canvas></div>
   </div>
@@ -464,6 +464,7 @@ def run() -> None:
             .replace("__DATOS__", datos)
             .replace("__DESC__", desc)
             .replace("__BASE__", cfg.SITIO_BASE)
+            .replace("__NITEMS__", str(len(d["dispersion"]) or 27))
             .replace("__DESDE__", d["kpis"]["desde"])
             .replace("__HASTA__", d["kpis"]["hasta"])
             .replace("__DIAS__", str(d["kpis"]["dias"])))

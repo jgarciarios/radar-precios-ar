@@ -26,7 +26,10 @@ import pandas as pd
 # (item, categoria, incluye, excluye, unidad_base, cantidad_mes)
 CANASTA: list[tuple[str, str, str, str, str, float]] = [
     ("Leche entera",        "Lácteos",     r"LECHE.*ENTERA",           r"POLVO|CHOCOLAT|DESCREM|INFANT", "l",  30.0),
-    ("Yogur bebible",       "Lácteos",     r"YOGUR.*BEBIBLE",          r"", "l",   6.0),
+    # Yogur en kg y no en litros: medido sobre datos reales, solo el 6,8% de las
+    # filas venía declarado en litros. La densidad del yogur es ~1, así que el
+    # $/kg y el $/l son equivalentes, y kg es como lo declara el mercado.
+    ("Yogur bebible",       "Lácteos",     r"YOGUR.*BEBIBLE",          r"", "kg",  6.0),
     ("Queso cremoso",       "Lácteos",     r"QUESO.*CREMOSO",          r"UNTABLE|RALLADO", "kg", 1.5),
     ("Manteca",             "Lácteos",     r"MANTECA",                 r"MARGARINA|CACAO|MANI", "kg", 0.6),
     ("Pan lactal",          "Panificados", r"PAN.*LACTAL",             r"", "kg",  3.0),
@@ -41,8 +44,13 @@ CANASTA: list[tuple[str, str, str, str, str, float]] = [
     ("Arvejas en lata",     "Almacén",     r"ARVEJA",                  r"SECA", "kg", 1.0),
     ("Atún en lata",        "Almacén",     r"ATUN",                    r"", "kg", 0.7),
     ("Huevos",              "Frescos",     r"HUEVO",                   r"CHOCOLATE|PASCUA|LIQUIDO", "un", 30.0),
-    ("Carne picada",        "Carnes",      r"CARNE.*PICADA",           r"", "kg", 4.0),
-    ("Pollo entero",        "Carnes",      r"POLLO.*ENTERO",           r"", "kg", 4.0),
+    # Carne picada y pollo entero SACADOS de la canasta (medido, no asumido):
+    # sobre una muestra de 500.000 filas capturaban 47 y 3 registros, con 2 y 1
+    # EAN respectivamente. La carne fresca se vende al peso en mostrador y casi
+    # no se publica en SEPA con código de barras.
+    # Dejar un item con 3 observaciones aportando al índice sería peor que no
+    # tenerlo: agrega ruido y da una falsa sensación de cobertura.
+    # Consecuencia a declarar: la canasta NO incluye carnes.
     ("Papa",                "Frutas y verduras", r"^PAPA\b",           r"CHIP|SNACK|FRITA|PURE", "kg", 8.0),
     ("Banana",              "Frutas y verduras", r"BANANA",            r"CHIP|DESHIDRAT", "kg", 4.0),
     ("Gaseosa cola",        "Bebidas",     r"(?:COCA|GASEOSA).*COLA",  r"ZERO|LIGHT|SIN AZUCAR", "l", 9.0),
