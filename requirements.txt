@@ -5,3 +5,4 @@ matplotlib>=3.7
 numpy>=1.24
 jupyter>=1.0
 jinja2>=3.1        # requerido por DataFrame.style en los notebooks
+ipywidgets>=8.0    # sin esto VS Code tira "Error rendering output item" en las salidas
